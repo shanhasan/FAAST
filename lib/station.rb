@@ -4,7 +4,7 @@ class Station
     @passenger ||=[]
   end
 
-  def credit
+  def credit #module
   end
 
   def scan_in(passenger)
