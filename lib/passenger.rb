@@ -1,7 +1,7 @@
 class Passenger
 
 def initialize()
-  @account = 7
+  @account = 0
 end
 
 def account
