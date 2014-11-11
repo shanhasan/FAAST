@@ -4,7 +4,7 @@ def initialize()
   @account = 0
 end
 
-def has_account?
+def account
   @account 
 end
 
