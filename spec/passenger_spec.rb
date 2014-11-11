@@ -4,11 +4,13 @@ describe Passenger do
 
   let(:passenger) {Passenger.new}
 
-  it "can have an account" do
-    expect(passenger.account).to be true
+  it "Initialized account with 0 money0" do
+    expect(passenger.has_account?).to eq(0)
   end
 
   it "can top up and account" do
+    passenger.topup(5)
+    expect(passenger.has_account?).to eq(5)
   end
 
   it "can have money deducted from the account" do
