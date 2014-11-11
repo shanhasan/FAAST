@@ -3,9 +3,11 @@ require "train"
 describe Train do
 
   it "can travel between stations" do
+
   end
   
-  it "is made up of coaches" do
+  xit "is made up of coaches" do
+    expect(train).to have_coaches
   end
 
   it "has a minimum limit of number of coaches" do
