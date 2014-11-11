@@ -1,14 +1,30 @@
 class Station
 
+  attr_accessor :station, :capacity_trains, :capacity_passengers
+
+  DEFAULT_CAPACITY_PASSENGERS = 200
+  DEFAULT_CAPACITY_TRAINS = 2
+
+  def initialize(options = {}) 
+    @capacity_trains = options.fetch(:capacity_trains, DEFAULT_CAPACITY_TRAINS)
+    @capacity_passengers = options.fetch(:capacity_passengers, DEFAULT_CAPACITY_PASSENGERS)
+    @station = Station
+  end
+
   def passengers #module
     @passenger ||=[]
   end
 
-  def credit #module
+  def trains
+    @trains ||=[]
   end
+
+  # def credit #module
+  # end
 
   def scan_in(passenger)
     raise "Not enough credit" if passenger.credit < 2
+    raise "The station is full" if passenger_count == DEFAULT_CAPACITY_PASSENGERS
     passengers << passenger 
   end
 
@@ -20,16 +36,17 @@ class Station
     passengers.count
   end 
 
-  def has_train?
-    @train
+  def train_count
+    trains.count
   end
 
   def arrival(train)
-    @train = true
+    raise "The platform is currently occupied, please wait" if train_count == DEFAULT_CAPACITY_TRAINS
+    trains << train
   end
 
   def departure(train)
-    @train = false
+    trains.delete(train)
   end
 
 end
