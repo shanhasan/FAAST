@@ -1,19 +1,19 @@
 class Passenger
 
 def initialize()
-  @account = 0
+  @account = 7
 end
 
 def account
   @account 
 end
 
-def credit
-
+def topup(number)
+  @account += number
 end
 
-def topup(number)
-  @account = number
+def deduct(number = 2)
+  @account -= number
 end
 
 end
