@@ -1,11 +1,11 @@
 class Passenger
 
-def initialize()
-  @account = 0
-end
+attr_accessor :origin, :account, :destination
 
-def account
-  @account 
+def initialize(origin='', destination='')
+  @account = 0
+  @origin = origin
+  @destination = destination
 end
 
 def topup(number)
