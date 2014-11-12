@@ -2,16 +2,21 @@ require "train"
 
 describe Train do
 
+let (:train) {Train.new}
+
   it "is initialized with 10 coaches" do
     expect(train.coaches).to eq(10)
   end
 
   it "should not be initialized at a station" do
-    expect(train.current_station).to be_empty
+    expect(train.current_station).to eq(nil)
   end
 
   it "can travel between stations" do
-    tra
+    train.station("s")
+    expect(train.current_station).to eq(nil)
+    train.journey 
+    expect(train.current_station).to eq("s")
   end
 
   it "should have a route" do
