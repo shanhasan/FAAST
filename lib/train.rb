@@ -15,9 +15,8 @@ class Train
     @current_station = new_location
   end
 
-  def station_embark(route)
-    @current_station.delete(station_stop(route))
+  def left_station?(route)
+    
   end
-
 
 end
