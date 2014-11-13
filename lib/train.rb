@@ -5,21 +5,20 @@ class Train
 
   def initialize(route='', location='', coaches='')
     @coaches = 10
-    @current_station  
+    @current_station = @location  
   end
 
   def route 
-    @station ||= []
+    @route ||= []
   end
 
-  def station(station)
-    route << station
-  end
+  # def location
+  #   @location = route.shift
+  # end 
 
-  def journey(route)
-    station.each do |station|
-      current_station << station
-    end
+  def station_stop 
+    @location = route.shift
+    @current_station << @location
   end
 
 

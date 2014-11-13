@@ -4,20 +4,23 @@ describe Train do
 
 let (:train) {Train.new}
 
-  it "is initialized with 10 coaches" do
-    expect(train.coaches).to eq(10)
-  end
+context "it should do the basics" do
 
-  it "should not be initialized at a station" do
-    expect(train.current_station).to eq(nil)
-  end
+  # it "is initialized with 10 coaches" do
+  #   expect(train.coaches).to eq(10)
+  # end
 
-  it "can travel between stations" do
-    train.station("s")
-    expect(train.current_station).to eq(nil)
-    train.journey 
-    expect(train.current_station).to eq("s")
-  end
+  # it "should not be initialized at a station" do
+  #   expect(train.current_station).to eq('')
+  # end
+
+  # it "can travel between stations" do
+  #   route = ["london bridge", "bank", "morgate", "old street"]
+  #   train.station_stop(route)
+  #   expect(train.current_station).to eq "london bridge"
+  #   train.station_stop(route)
+  #   expect(train.current_station).to eq "bank"
+  # end
 
   it "should have a route" do
 
@@ -35,6 +38,7 @@ let (:train) {Train.new}
 
   end
 
+end
 end
 
 #Tests
