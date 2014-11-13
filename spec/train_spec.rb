@@ -1,9 +1,12 @@
 require "train"
+require "coach"
 
 describe Train do
 
 let (:train) {Train.new}
 let (:station) {double :station}
+let (:passenger1) {double :passenger, :origin => "london bridge", :destination => "morgate"}
+let (:coach) {double :coach}
 
 
 context "it should do the basics" do
@@ -39,24 +42,22 @@ context "it should do the basics" do
     
   end
 
-  # it "should have a route" do
-  #   expect(train).to have_route
+  # it "should release passengers when at their destination" do
+
+  #   route = ["london bridge", "bank", "morgate", "old street"]
+  #   train.station_stop(route)
+  #   expect(coach).to receive(:coach.board(passenger1))
+
+  # end
+  
+end
+
+  # it "should pick up passengers when at their origin" do
+
   # end
 
-  it "should be able to stop at specific stations on the route" do
-  
-  end
-
-  it "should release passengers when at their destination" do
-
-  end
-
-  it "should pick up passengers when at their origin" do
-
-  end
-
 end
-end
+
 
 #Tests
 #Should be initialized with 10 coaches

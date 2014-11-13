@@ -1,4 +1,6 @@
-class Train 
+require 'coach'
+
+class Train < Coach
 
   attr_accessor :coaches, :route, :current_station
   attr_reader :itenerary
@@ -21,5 +23,20 @@ class Train
     @current_station = new_location
   end
 
+  def passengers_board(passenger)
+    if 
+      @current_station == passenger.origin
+      board(passenger)
+    end
+  end
 
+  def passenger_disembark(passenger)
+    if 
+      @current_station == passenger.destination
+      disembark_passenger
+    else
+      raise "Please wait till you reach your destination"
+    end
+  end
+  
 end
