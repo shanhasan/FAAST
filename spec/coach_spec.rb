@@ -22,6 +22,8 @@ describe Coach do
     end
 
   it "Capacity can't be negative" do
+    expect(coach.passenger_count).to eq(0)
+    expect{coach.disembark(passenger)}.to raise_error RuntimeError
   end
 
   it "Passenger count can't be negative" do

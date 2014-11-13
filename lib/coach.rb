@@ -22,6 +22,7 @@ class Coach
   end 
 
   def disembark(passenger)
+    raise "There are no passengers on the train" if passenger_count == 0
     passengers.delete(passenger)
   end
 
