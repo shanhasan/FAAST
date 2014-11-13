@@ -16,8 +16,10 @@ describe Coach do
     expect(coach.passenger_count).to eq(0)
   end
 
-  it "Has a maximum capacity" do
-  end
+  it "passengers can't enter when train is full" do
+    40.times{coach.board(passenger)}
+    expect{coach.board(passenger)}.to raise_error RuntimeError
+    end
 
   it "Capacity can't be negative" do
   end
