@@ -3,8 +3,10 @@ class Train
   attr_accessor :coaches, :route, :current_station
   attr_reader :itenerary
 
+  DEFAULT_NUM_COACHES = 10
+
   def initialize(route='', location='', coaches='')
-    @coaches = 10
+    @coaches = DEFAULT_NUM_COACHES
     @current_station = @location  
   end
 
