@@ -6,9 +6,9 @@ let (:train) {Train.new}
 
 context "it should do the basics" do
 
-  # it "is initialized with 10 coaches" do
-  #   expect(train.coaches).to eq(10)
-  # end
+  it "is initialized with 10 coaches" do
+    expect(train.coaches).to eq(10)
+  end
 
   # it "should not be initialized at a station" do
   #   expect(train.current_station).to eq('')
