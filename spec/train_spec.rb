@@ -3,6 +3,7 @@ require "train"
 describe Train do
 
 let (:train) {Train.new}
+let (:station) {double :station}
 
 
 context "it should do the basics" do
@@ -12,32 +13,35 @@ context "it should do the basics" do
   end
 
   it "should not be initialized at a station" do
-    expect(train.current_station).to eq(nil)
-  end
-
-  it "can't arrive at a station without having left the pervious one" do
-
+    expect(train.current_station).to eq nil
   end
 
   it "can travel between stations" do
     route = ["london bridge", "bank", "morgate", "old street"]
     train.station_stop(route)
     expect(train.current_station).to eq "london bridge"
+  end
+
+  it "can't arrive at a station without having left the pervious one" do
+    route = ["london bridge", "bank", "morgate", "old street"]
+    train.station_stop(route)
+    expect{train.station_stop(route)}.to raise_error RuntimeError
+  end
+
+  it "can stop at multiple stations on its route" do
+    route = ["london bridge", "bank", "morgate", "old street"]
+    train.station_stop(route)
+    expect(train.current_station).to eq "london bridge"
+    train.depart(station)
+    expect(train.current_station).to eq nil
     train.station_stop(route)
     expect(train.current_station).to eq "bank"
-  end
-
-  # it "should have left a station before arriving at the next one" do
-  #   route = ["london bridge", "bank", "morgate", "old street"]
-  #   train.station_stop(route)
-  #   expect(train.current_station).to eq "london bridge"
-  #   expect(train.station_embark(route))
     
-  # end
-
-  it "should have a route" do
-
   end
+
+  # it "should have a route" do
+  #   expect(train).to have_route
+  # end
 
   it "should be able to stop at specific stations on the route" do
   

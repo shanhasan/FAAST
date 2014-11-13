@@ -8,15 +8,18 @@ class Train
   def initialize(route='', location='', coaches='')
     @coaches = DEFAULT_NUM_COACHES
     @route = []
+    @current_station
+  end
+
+  def depart(station)
+    @current_station = nil
   end
 
   def station_stop(route) 
+    raise "Train hasn't left the last station yet" unless @current_station == nil
     new_location = route.shift
     @current_station = new_location
   end
 
-  def left_station?(route)
-    
-  end
 
 end
