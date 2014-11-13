@@ -2,11 +2,19 @@ require 'coach'
 
 describe Coach do
 
+  let (:coach) {Coach.new}
+  let (:passenger) {double :passenger}
+
   it "lets passengers enter coach" do
+    coach.board(passenger)
+    expect(coach.passenger_count).to eq(1)
   end
 
-  it "lets passengers exit coach" do
-  end
+  # it "lets passengers exit coach" do
+  #   coach.board(passenger)
+  #   coach.disembark(passenger)
+  #   expect(coach.passenger_count).to eq(0)
+  # end
 
   it "Has a maximum capacity" do
   end
