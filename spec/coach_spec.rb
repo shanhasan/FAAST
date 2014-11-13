@@ -10,11 +10,11 @@ describe Coach do
     expect(coach.passenger_count).to eq(1)
   end
 
-  # it "lets passengers exit coach" do
-  #   coach.board(passenger)
-  #   coach.disembark(passenger)
-  #   expect(coach.passenger_count).to eq(0)
-  # end
+  it "lets passengers exit coach" do
+    coach.board(passenger)
+    coach.disembark(passenger)
+    expect(coach.passenger_count).to eq(0)
+  end
 
   it "Has a maximum capacity" do
   end

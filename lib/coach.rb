@@ -12,4 +12,8 @@ class Coach
     passengers.count
   end 
 
+  def disembark(passenger)
+    passengers.delete(passenger)
+  end
+
 end
