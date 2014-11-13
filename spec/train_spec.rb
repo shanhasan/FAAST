@@ -10,9 +10,9 @@ context "it should do the basics" do
     expect(train.coaches).to eq(10)
   end
 
-  # it "should not be initialized at a station" do
-  #   expect(train.current_station).to eq('')
-  # end
+  it "should not be initialized at a station" do
+    expect(train.current_station).to eq(nil)
+  end
 
   # it "can travel between stations" do
   #   route = ["london bridge", "bank", "morgate", "old street"]
