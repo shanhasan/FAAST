@@ -4,6 +4,7 @@ describe Train do
 
 let (:train) {Train.new}
 
+
 context "it should do the basics" do
 
   it "is initialized with 10 coaches" do
@@ -11,15 +12,21 @@ context "it should do the basics" do
   end
 
   it "should not be initialized at a station" do
-    expect(train.current_station).to eq("")
+    expect(train.current_station).to eq(nil)
   end
 
   it "can travel between stations" do
     route = ["london bridge", "bank", "morgate", "old street"]
     train.station_stop(route)
     expect(train.current_station).to eq "london bridge"
-    # train.station_stop(route)
-    # expect(train.current_station).to eq "bank"
+    train.station_stop(route)
+    expect(train.current_station).to eq("bank")
+  end
+
+  it "should have left a station before arriving at the next one" do
+    route = ["london bridge", "bank", "morgate", "old street"]
+    train.station_stop(route)
+    expect(train.current_station).to eq "london bridge"
   end
 
   it "should have a route" do
