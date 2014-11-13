@@ -7,7 +7,7 @@ class Train
 
   def initialize(route='', location='', coaches='')
     @coaches = DEFAULT_NUM_COACHES
-    @current_station = @location  
+    @current_station = location  
   end
 
   def route 
@@ -18,9 +18,9 @@ class Train
   #   @location = route.shift
   # end 
 
-  def station_stop 
-    @location = route.shift
-    @current_station << @location
+  def station_stop(route) 
+    new_location = route.shift
+    @current_station << new_location
   end
 
 
