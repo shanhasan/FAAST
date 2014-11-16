@@ -27,16 +27,18 @@ class Train < Coach
     if 
       @current_station == passenger.origin
       board(passenger)
+    else
+      raise "train hasn't arrived yet"
     end
   end
 
-  def passenger_disembark(passenger)
-    if 
-      @current_station == passenger.destination
-      disembark_passenger
-    else
-      raise "Please wait till you reach your destination"
-    end
-  end
-  
+  # def passenger_disembark(passenger)
+  #   if 
+  #     @current_station == passenger.destination
+  #     disembark_passenger
+  #   else
+  #     raise "Please wait till you reach your destination"
+  #   end
+  # end
+
 end
