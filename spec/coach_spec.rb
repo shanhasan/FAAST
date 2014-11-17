@@ -25,13 +25,6 @@ describe Coach do
     expect(coach.passenger_count).to eq(0)
     expect{coach.disembark(passenger)}.to raise_error RuntimeError
   end
-
-  it "passenger can only enter when train is at station" do
-  end
-
-  it "passengers can only exit when train is at station" do
-  end
-  
 end
 
 #Tests

@@ -13,11 +13,11 @@ class Train < Coach
     @current_station
   end
 
-  def depart(station)
+  def depart(route)
     @current_station = nil
   end
 
-  def station_stop(route) 
+  def stop(route) 
     raise "Train hasn't left the last station yet" unless @current_station == nil
     new_location = route.shift
     @current_station = new_location
@@ -32,13 +32,13 @@ class Train < Coach
     end
   end
 
-  # def passenger_disembark(passenger)
-  #   if 
-  #     @current_station == passenger.destination
-  #     disembark_passenger
-  #   else
-  #     raise "Please wait till you reach your destination"
-  #   end
-  # end
+  def passenger_disembark(passenger)
+    if 
+      @current_station == passenger.destination
+      disembark(passenger)
+    else
+      raise "Please wait till you reach your destination"
+    end
+  end
 
 end
