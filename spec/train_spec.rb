@@ -6,7 +6,7 @@ describe Train do
 let (:train) {Train.new}
 let (:station) {double :station}
 let (:passenger1) {double :passenger, :origin => "bank", :destination => "old street"}
-let (:coach) {double :coach}
+let (:coach) {Coach.new}
 
 
 context "it should do the basics" do
@@ -45,9 +45,9 @@ context "it should do the basics" do
   # it "should release passengers when at their destination" do
 
   #   route = ["london bridge", "bank", "morgate", "old street"]
-  #   train.station_stop(route)
-  #   expect(coach).to receive(:coach.board(passenger1))
-
+  #   4.times{train.station_stop(route)}
+  #   expect(coach.passenger_count.to eq(1))
+  
   # end
 
   it "should pick up passengers when at their origin" do
@@ -56,7 +56,8 @@ context "it should do the basics" do
     expect{train.passengers_board(passenger1)}.to raise_error "train hasn't arrived yet"
     train.depart(station)
     train.station_stop(route)
-    expect(coach.passenger_count).to eq(1)
+    train.passengers_board(passenger1)
+    expect(train.passenger_count).to eq(1)
 
   end
 
