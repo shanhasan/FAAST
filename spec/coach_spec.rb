@@ -37,8 +37,7 @@ describe Coach do
 
     it "should pick up passengers when at their origin" do
       coach.current_station= 'bank'
-      coach.has_the_train_arrived?(passenger1)
-      expect(coach.passenger_count).to eq(1)
+      expect{coach.has_the_train_arrived?(passenger1)}.to change{coach.passenger_count}.by 1
     end
  
     it "should Not pick up passengers when Not at their origin" do
@@ -47,10 +46,15 @@ describe Coach do
     end
 
     it "should release passengers when at their destination" do
-      coach.passengers == [passenger2]
+      coach.passengers.push(passenger2)
       coach.current_station= 'morgate'
-      coach.has_the_train_reached?(passenger2)
-      expect(coach.passenger_count).to eq(0)
+      expect{coach.has_the_train_reached?(passenger2)}.to change{coach.passenger_count}.by -1
+    end
+
+    it "should Non release passenger when Not at their destination" do
+      coach.passengers.push(passenger2)
+      coach.current_station= 'bank'
+      expect{coach.has_the_train_reached?(passenger2)}.to raise_error "please wait till your station"
     end
   end
 end
