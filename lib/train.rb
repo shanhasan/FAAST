@@ -7,9 +7,9 @@ class Train
 
   DEFAULT_NUM_COACHES = 10
 
-  def initialize(route='', location='', coaches='')
+  def initialize(route='"london bridge", "bank", "morgate", "old street", "angle"', location='', coaches='')
     @coaches = DEFAULT_NUM_COACHES
-    # @route = []
+    @route = []
     @current_station
   end
 
@@ -22,23 +22,4 @@ class Train
     new_location = route.shift
     @current_station = new_location
   end
-
-  # def passenger_board(passenger)
-  #   if 
-  #     @current_station == passenger.origin
-  #     board(passenger)
-  #   else
-  #     raise "train hasn't arrived yet"
-  #   end
-  # end
-
-  # def passenger_disembark(passenger)
-  #   if 
-  #     @current_station == passenger.destination
-  #     disembark(passenger)
-  #   else
-  #     raise "Please wait till you reach your destination"
-  #   end
-  # end
-
 end
