@@ -6,7 +6,7 @@ describe Train do
 let (:train)    {Train.new}
 let (:coach)    {Coach.new}
 let (:station)  {double :station}
-let (:passenger1) {double :passenger, :origin => "london bridge", :destination => "old street"}
+let (:passenger1) {double :passenger, :origin => "bank", :destination => "old street"}
 let (:passenger2) {double :passenger, :origin => "bank", :destination => "angle"}
 
 let (:route)    { ["london bridge", "bank", "morgate", "old street", "angle"] }
@@ -15,35 +15,6 @@ let (:route)    { ["london bridge", "bank", "morgate", "old street", "angle"] }
     train.depart(route)
     expect(train.current_station).to eq nil
     train.stop(route)
-  end
-
-  def train_hasnt_arrived_yet
-    expect{train.passengers_board(passenger1)}.to raise_error "train hasn't arrived yet"
-  end
-
-  def pick_up_passengers
-    train.stop(route)
-    train.passengers_board(passenger1)
-    train.depart(route)
-    train.stop(route)
-    train.passengers_board(passenger2)
-  end
-
-  def disembark_passengers
-    train.depart(route)
-    train.stop(route)
-    train.depart(route)
-    train.stop(route)
-    train.passenger_disembark(passenger1)
-    expect{train.passenger_disembark(passenger2)}.to raise_error "Please wait till you reach your destination"
-    train.depart(route)
-    train.stop(route)
-    train.passenger_disembark(passenger2)
-  end
-
-  def try_to_disembark
-    expect{train.passenger_disembark(passenger1)}.to raise_error "Please wait till you reach your destination"
-    expect{train.passenger_disembark(passenger2)}.to raise_error "Please wait till you reach your destination"
   end
 
   context "it should do the basics" do
@@ -71,22 +42,6 @@ let (:route)    { ["london bridge", "bank", "morgate", "old street", "angle"] }
       expect(train.current_station).to eq "london bridge"
       train_journey_leg
       expect(train.current_station).to eq "bank"
-    end
-  end
-
-  context "it should board & disembark passengers at their origin and destinations" do
-
-    it "should pick up passengers when at their origin" do
-      train_hasnt_arrived_yet
-      pick_up_passengers
-      expect(train.passenger_count).to eq(2)
-    end
-
-    it "should release passengers when at their destination" do
-      pick_up_passengers
-      try_to_disembark
-      disembark_passengers
-      expect(train.passenger_count).to eq(0)
     end
   end
 end
