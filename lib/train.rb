@@ -7,7 +7,7 @@ class Train
 
   DEFAULT_NUM_COACHES = 10
 
-  def initialize(route='"london bridge", "bank", "morgate", "old street", "angle"', location='', coaches='')
+  def initialize(route='', location='', coaches='')
     @coaches = DEFAULT_NUM_COACHES
     @route = []
     @current_station
